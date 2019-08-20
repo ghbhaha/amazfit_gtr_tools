@@ -1,5 +1,7 @@
 import os
 
+import logging
+
 
 class Header:
     dialSignature = b"HMDIAL\0"
@@ -48,10 +50,13 @@ class Header:
         name, _ = os.path.splitext(os.path.basename(stream.name))
         unpackedPath = os.path.join(path, name)
         headerPath = os.path.join(unpackedPath, "header.bin")
-        with open(headerPath, 'wb') as fileStream:
-            fileStream.write(sig_buffer)
-            fileStream.write(buffer)
-            fileStream.flush()
+        try:
+            with open(headerPath, 'wb') as fileStream:
+                fileStream.write(sig_buffer)
+                fileStream.write(buffer)
+                fileStream.flush()
+        except Exception as _:
+            logging.info("can not open:" + headerPath)
 
         header = Header(
             unknown = int.from_bytes(buffer[Header.unknownPos:Header.unknownPos+4], byteorder='little'),

@@ -106,6 +106,14 @@ class Parser:
         imagesDirectory = os.path.dirname(inputFileName)
         try:
             Parser.writeWatchFace(outputDirectory, outputFileName, imagesDirectory, watchFace)
+
+            logging.debug("generatePreviews")
+            reader = Parser.readWatchFace(outputFileName)
+            if not reader:
+                return
+            Parser.generatePreviews(reader.getParameters(), reader.getImages(), outputDirectory, baseName)
+            logging.debug("generatePreviews done")
+
         except Exception as e:
             os.remove(outputFileName)
             raise e
