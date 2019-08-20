@@ -20,6 +20,6 @@ class PreviewGenerator:
     def createFrame(watchFace, resources, state):
         from PIL import Image, ImageDraw
 
-        graphics = Image.new('RGBA', (360, 360))
+        graphics = Image.new('RGBA', (454, 454))
         watchFace.draw3(graphics, resources, state)
         return graphics

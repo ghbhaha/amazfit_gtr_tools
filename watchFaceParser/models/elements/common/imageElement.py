@@ -30,8 +30,8 @@ class ImageElement(CoordinatesElement):
         else:
             bitmap = images[self._imageIndex].getBitmap()
             from PIL import Image
-            temp = Image.new('RGBA', (360, 360))
-            temp.paste(bitmap, (180 - x, 180 - y), bitmap)
+            temp = Image.new('RGBA', (454, 454))
+            temp.paste(bitmap, (int(454/2) - x, int(454/2) - y), bitmap)
             temp = temp.rotate(angle)
             drawer.paste(temp, (0,0), temp)
 
