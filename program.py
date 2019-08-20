@@ -114,6 +114,14 @@ class Parser:
             Parser.generatePreviews(reader.getParameters(), reader.getImages(), outputDirectory, baseName)
             logging.debug("generatePreviews done")
 
+            logging.debug("generate 0001.png")
+            static_img_path = os.path.join(outputDirectory, f"{baseName}_static.png")
+            _0001_path = os.path.join(outputDirectory, "0001.png")
+            from PIL import Image
+            im = Image.open(static_img_path).resize((266, 266), resample=Image.LANCZOS)
+            im.save(_0001_path)
+            logging.debug("generate 0001.png done")
+
         except Exception as e:
             os.remove(outputFileName)
             raise e
