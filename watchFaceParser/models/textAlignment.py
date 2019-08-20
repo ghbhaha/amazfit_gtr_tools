@@ -29,6 +29,12 @@ class TextAlignment:
         BottomCenter : "BottomCenter",
         BottomLeft : "BottomLeft",
         BottomRight : "BottomRight",
+        Right : "Right",
+        Left: "Left",
+        HCenter: "HCenter",
+        Top: "Top",
+        Bottom: "Bottom",
+        VCenter: "VCenter",
     }
 
     def __init__(self, flag):
