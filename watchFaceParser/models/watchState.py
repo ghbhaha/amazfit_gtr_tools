@@ -2,14 +2,18 @@ import datetime
 
 
 class WatchState:
-    def __init__(self, BatteryLevel = 67, Pulse = 62, Steps = 14876, Calories = 764, Distance = 2367):
-        self._time = datetime.datetime.now()
+    def __init__(self, BatteryLevel = 67, Pulse = 62, Steps = 14876, Calories = 764, Distance = 2367, Bluetooth = False, Unlocked = False, Alarm = False, DoNotDisturb = False):
+        self._time = datetime.datetime.now().replace(hour = 10, minute = 10, second = 30)
         self._steps = Steps
         self._goal = 8000
         self._distance = Distance
         self._calories = Calories
         self._pulse = Pulse
         self._batteryLevel = BatteryLevel
+        self._bluetooth = Bluetooth
+        self._unlocked = Unlocked
+        self._alarm = Alarm
+        self._doNotDisturb = DoNotDisturb
 
 
     def getTime(self):
@@ -44,6 +48,22 @@ class WatchState:
         return self._calories
 
 
+    def getBluetooth(self):
+        return self._bluetooth
+
+
+    def getUnlocked(self):
+        return self._unlocked
+
+
+    def getAlarm(self):
+        return self._alarm
+
+
+    def getDoNotDisturb(self):
+        return self._doNotDisturb
+
+
     def toJSON(self):
         return {
             'Time': self.datetimeToJson(),
@@ -52,9 +72,12 @@ class WatchState:
             'Pulse': self._pulse,
             'BatteryLevel': self._batteryLevel,
             'Distance': self._distance,
-            'Calories': self._calories
+            'Calories': self._calories,
+            'Bluetooth': self._bluetooth,
+            'Unlocked': self._unlocked,
+            'Alarm': self._alarm,
+            'DoNotDisturb': self._doNotDisturb,
         }
-
 
     def datetimeToJson(self):
         t = self._time
@@ -71,5 +94,9 @@ class WatchState:
         w._batteryLevel = j['BatteryLevel']
         w._distance = j['Distance']
         w._calories = j['Calories']
+        w._bluetooth = j['Bluetooth']
+        w._unlocked = j['Unlocked']
+        w._alarm = j['Alarm']
+        w._doNotDisturb = j['DoNotDisturb']
         return w
 

@@ -59,4 +59,3 @@ class Reader():
         logging.info(f"Width: {self._width}, Height: {self._height}, RowLength: {self._rowLengthInBytes}")
         logging.info(f"BPP: {self._bitsPerPixel}, Transparency: {self._transparency}")
 
-
