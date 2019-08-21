@@ -23,10 +23,12 @@ class DistanceElement(CompositeElement):
         decimals = int(state.getDistance() % 1000 / 10)
 
         images = self.getNumber().getImagesForNumber(resources, kilometers)
-        images.append(resources[self.getDecimalPointImageIndex()])
+        if self.getDecimalPointImageIndex() > 0:
+            images.append(resources[self.getDecimalPointImageIndex()])
         for image in self.getNumber().getImagesForNumber(resources, decimals):
             images.append(image)
-        images.append(resources[self.getSuffixImageIndex()])
+        if self.getSuffixImageIndex() > 0:
+            images.append(resources[self.getSuffixImageIndex()])
 
         from watchFaceParser.helpers.drawerHelper import DrawerHelper
         DrawerHelper.drawImages(drawer, images, int(self.getNumber().getSpacing()), self.getNumber().getAlignment(), self.getNumber().getBox())

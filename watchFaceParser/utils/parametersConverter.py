@@ -93,7 +93,7 @@ class ParametersConverter:
                 elif propertyType == 'long':
                     setattr(result, propertyInfoName, ulong2long(parameter.getValue()))
                 else:
-                    setattr(result, propertyInfoName, ulong2long(parameter.getValue() or None))
+                    setattr(result, propertyInfoName, ulong2long(parameter.getValue()))
 
             elif propertyType == '[]':
                 assert(False) # not tested yet
