@@ -17,7 +17,7 @@ class Reader():
             print(signature)
             raise TypeError("Image signature doesn't match.")
 
-        if signature[2] == 0xff and signature[2] == 0xff:
+        if signature[2] == 0xff:
             logging.warn("The image is 32bit.")
             self._bip = False
 
